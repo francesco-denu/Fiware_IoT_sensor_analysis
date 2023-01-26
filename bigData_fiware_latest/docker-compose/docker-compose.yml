@@ -21,7 +21,7 @@ services:
   mongo-db:
     labels:
       org.fiware: 'tutorial'
-    image: mongo:latest
+    image: mongo:4.4
     hostname: mongo-db
     container_name: db-mongo
     expose:
