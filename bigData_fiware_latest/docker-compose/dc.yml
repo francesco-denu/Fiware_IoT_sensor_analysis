@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  analysis:
+    build: ../analysis
+    container_name: analysis
+    expose:
+      - "5050"
+    ports:
+      - "5050:5050"
+    networks:
+      - fiware_default
+
+  sensor:
+    build: ../sensor
+    container_name: sensor
+    depends_on:
+      - analysis
+    networks:
+      - fiware_default
+      
+  app:
+    build: ../application
+    container_name: application
+    depends_on:
+      - sensor
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+    networks:
+      - fiware_default
+
+networks:
+  fiware_default:
+    external: true
