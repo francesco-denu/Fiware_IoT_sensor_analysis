@@ -1,0 +1,707 @@
+[
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 81
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T00:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 54
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 82
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T01:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 51
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 84
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T02:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 49
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 80
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T03:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 50
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 81
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T04:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 48
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 77
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T05:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 47
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 78
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T06:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 49
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 82
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 1
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T07:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 51
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 84
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 1
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T08:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 48
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 89
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T09:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 47
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 85
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T10:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 51
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 85
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T11:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 48
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 86
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T12:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 47
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 88
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T13:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 50
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 1
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 87
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T14:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 47
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 90
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T15:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 48
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 87
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 1
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T16:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 51
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 84
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T17:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 50
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 88
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T18:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 53
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 90
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T19:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 50
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 93
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T20:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 53
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 89
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T21:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 49
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 87
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T22:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 53
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 0
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+},
+
+
+
+{
+"id": "urn:ngsi:WaterObserved:MNCA-001",
+"type": "Water",
+
+    "height": {
+        "type": "Property",
+        "value": 90
+    },
+    "heightFlag": {
+        "type": "Property",
+        "value": 0
+    },
+    "observedDate": {
+        "type": "DateTime",
+        "value": "2017-01-31T23:00:00Z"
+    },                                                                                                              
+    "temperature": {
+        "type": "Property",
+        "value": 50
+    },
+    "temperatureFlag": {
+        "type": "Property",
+        "value": 1
+    },
+
+    "@context": "http://context/ngsi-context.jsonld"
+}
+]
+
+
+
+
+

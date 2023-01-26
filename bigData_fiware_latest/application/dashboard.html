@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+		<title>My IoT agents</title>
+	</head>
+
+	<body>
+	
+		<div class="dashboard">
+			<h1>IoT Agent Dashboard</h1>
+			
+			<div class="agent">
+				<h2>Water temp.</h2>
+				<p>Temperature: <span id="temperature">X</span>°C</p>
+				<p>Last update: <span id="temp_update">X</span> o'clock</p>
+				<p>Status: <span id="temp_status">X</span></p>
+			</div>
+			
+			<div class="chart">
+				<canvas id="chart1"></canvas>
+			</div>
+			
+			<div class="agent">
+				<h2>Water level</h2>
+				<p>Water level: <span id="water_level">X</span>%</p>
+				<p>Last update: <span id="water_update">X</span> o'clock</p>
+				<p>Status: <span id="water_status">X</span></p>
+			</div>
+			
+			<div class="chart">
+				<canvas id="chart2"></canvas>
+			</div>
+		</div>
+
+
+<script>
+
+
+	var hour_time = [] //array dentro cui memorizzerò gli orari di cui abbiamo misure
+	
+	var avg_temp = [] //array dentro cui memorizzerò i valori di temperatura medi 
+	var daily_temp = [] //array che si comporrà delle misure giornaliere sulla temperatura
+	var color_temp = [] //array che conterrà i colori dei valori giornalieri di temperatura
+	
+	var avg_level = [] //array che conterrà i valori medi del livello dell'acqua
+	var daily_wat = [] //array che conterrà le misure di consumo giornaliere
+	var color_level = [] //array che conterrà i colori dei valori giornalieri sull'acqua
+
+	
+	//faccio la get per trovare il giorno piu recente a cui risalgono le ultime misure
+	var recentDate;
+	fetch('http://localhost:3000/recent_date')
+  	.then(response => response.json())
+  	.then(data => {
+  	
+  	
+    recentDate = data.date;
+        
+    
+	//trovo tutti i valori relativi all'ultimo giorno a cui risalgono le misure
+    fetch(`http://localhost:3000/date/${recentDate}`)
+  	.then(response => response.json())
+  	.then(data => {
+  	
+  	
+  	//ora aggiungo tutti gli elementi dell'ultimo giorno a cui risalgono le misure (tranne l'ultima che viene aggiunto da un altro metodo)
+  	for (let i = 0; i < data.length - 1; i++) { //per ogni documento json
+  	
+  		if (data[i]["temperatureFlag"]["value"] != -1 &&  data[i]["heightFlag"]["value"] != -1){ 
+			
+  	
+  			let date = new Date(data[i]["observedDate"]["value"]);
+			let hour = date.getUTCHours(); //estraggo l'ora dal campo della data
+  			let formattedHour = hour.toString().padStart(2, '0');
+  	
+  	
+  			var newDataPoint1 = {
+    				x: formattedHour,
+    				y: data[i]["temperature"]["value"],
+    				pointBackgroundColor: 'rgb(255, 99, 132)'
+				}; 
+
+							
+			if (data[i]["temperatureFlag"]["value"] == 1){
+				chart1.data.datasets[1].data.push(newDataPoint1);
+				color_temp.push("red");
+			}else if (data[i]["temperatureFlag"]["value"] == 0){
+				chart1.data.datasets[1].data.push(newDataPoint1);
+				color_temp.push("blue");
+			}	
+				
+			chart1.update(); //aggiorna il grafico
+				
+				
+				
+				
+			var newDataPoint2 = {
+    			x: formattedHour,
+    			y: data[i]["height"]["value"],
+    			pointBackgroundColor: 'rgb(255, 99, 132)'
+			}; 
+
+							
+			if (data[i]["heightFlag"]["value"] == 1){
+				chart2.data.datasets[1].data.push(newDataPoint2);
+				color_level.push("red");
+			}else if (data[i]["heightFlag"]["value"] == 0){
+				chart2.data.datasets[1].data.push(newDataPoint2);
+				color_level.push("blue");
+			}	
+				
+			chart2.update(); //aggiorna il grafico
+				
+		}//if lo puoi mostrare
+	}//for
+							
+	//update_temp(); //necessario altrimenti passa un secondo prima che metta il nuovo valore e magati ci perdiamo un valore
+	
+	//ora ogni secondo chiamo la funzione update_temp che si occuperà di controllare se ci sono valori nuovi, e in caso di metterli nei grafici 
+  	setInterval(update_temp, 2000); 
+  	
+  	
+  	
+    console.log(data)
+  	})
+  	.catch(error => {
+    console.error(error);
+  });
+  
+    
+    
+  	})
+  .catch(error => {
+    console.error(error);
+  });
+  
+
+ 
+  
+	//qui farò una get a /avg_time che ritorna i valori medi di temperatura e del livello dell'acqua. In questo modo riempio gli array hour_time, avg_temp, avg_level
+	let data;
+	fetch('/avg_temp')
+		.then(response => response.json())
+		.then(res => {
+			data = res;
+			for (let i = 0; i < data.length; i++) { //per ogni documento json
+				avg_temp.push(data[i]["temperature"]["value"]); //aggiungo la temperatura nell'array delle temperature
+				avg_level.push(data[i]["height"]["value"])
+				let date = new Date(data[i]["observedDate"]["value"]);
+				let hour = date.getUTCHours(); //estraggo l'ora dal campo della data
+				let formattedHour = hour.toString().padStart(2, '0');
+				
+				hour_time.push(formattedHour); //aggiungo l'ora all'array che contiene le ore dei campioni
+			} 
+		})
+		.catch(error => console.error(error))
+
+  
+  
+  
+	//creo qui i dati per il primo grafico
+	chart_data = {
+		labels: hour_time,
+		datasets:[{label: 'Temperature average values', backgroundColor: 'rgb(0, 102, 0)', borderColor:'rgb(102, 204, 0)', data: avg_temp }
+				,{label: 'Temperature daily values', backgroundColor: 'rgb(43, 0, 255)', borderColor:'rgb(0, 128, 255)', data: daily_temp, pointBackgroundColor : color_temp}
+				]}
+                  
+    // Get the context of the canvas element we want to select
+    var ctx = document.getElementById('chart1').getContext('2d');
+
+    // Create a new line chart using the chart.js library
+    var chart1 = new Chart(ctx, {type: 'line', data: chart_data, options: {} });
+
+
+
+	//creo i dati per il secondo grafico
+	chart_data = {
+		labels: hour_time,
+		datasets: [{label: 'Water level average values', backgroundColor: 'rgb(0, 102, 0)', borderColor:'rgb(102, 204, 0)', data: avg_level},
+                  {label: 'Water level daily values', backgroundColor: 'rgb(43, 0, 255)', borderColor:'rgb(0, 128, 255)', data: daily_wat, pointBackgroundColor : color_level}]}
+
+    // Get the context of the canvas element we want to select
+    var ctx = document.getElementById('chart2').getContext('2d');
+
+    // Create a new line chart using the chart.js library
+    var chart2 = new Chart(ctx, {type: 'line', data: chart_data, options: {}});
+
+
+
+
+    
+	
+	//memorizzo l'orario a cui corrisponde l'ultimo aggiornamento
+    var lastUpdatedTime = ""; 
+    
+    //questa funzione verrà chiamata ogni secondo, e prende l'ultimo documento aggiunto al database dal sensore di temperatura, e se è nuovo lo aggiunge al grafico 
+	function update_temp(){ 
+
+		let data;
+		fetch('/live_temp')
+  		.then(response => response.json())
+		.then(res => {
+			my_data = res;
+			
+			
+			//si aggiunge il valore solo se è nuovo e se è stato già "giudicato", ovvero sappiamo se è outlier o no
+			if (my_data["observedDate"]["value"] != lastUpdatedTime){ 
+			
+      			lastUpdatedTime = my_data["observedDate"]["value"] //aggiorno l'ultimo tempo di update
+			
+			
+				//let date = new Date(my_data["observedDate"]["value"]);
+				//let hour = date.getUTCHours(); //estraggo l'ora dal campo della data
+				let date = new Date(my_data["observedDate"]["value"]);
+				let hour = date.getUTCHours();
+				let formattedHour = hour.toString().padStart(2, '0');
+				
+
+				if (hour == 0){ //se superiamo 24 ore, svuota l'array
+					daily_temp = []
+					color_temp = []
+					chart1.data.datasets[1].data = daily_temp; 
+					chart1.data.datasets[1].pointBackgroundColor = color_temp;
+					chart1.update();
+					
+					daily_wat = []
+					color_level = []
+					chart2.data.datasets[1].data = daily_wat;
+					chart2.data.datasets[1].pointBackgroundColor = color_level;
+					chart2.update();
+					
+					//location.reload();
+					//console.log("AGGIORNOOOOOOO")
+				}
+			
+			
+			
+				//si aggiorna il primo grafico 
+				
+				document.getElementById('temp_update').innerHTML = hour;
+      			
+      			if (my_data["temperatureFlag"]["value"] == 0){
+      				let temp = document.getElementById('temperature')
+      				temp.innerHTML = my_data["temperature"]["value"]
+      				temp.style.color = "green";
+      				
+      				let status = document.getElementById('temp_status')
+      				status.innerHTML = "Ok"
+      				status.style.color = "green";
+
+      			}else if (my_data["temperatureFlag"]["value"] == 1){
+      			  	let temp = document.getElementById('temperature')
+      				temp.innerHTML = my_data["temperature"]["value"]
+      				temp.style.color = "red";
+      				
+      				let status = document.getElementById('temp_status')
+      				status.innerHTML = "Alert"
+      				status.style.color = "red";
+      				
+      				
+      				//alert("Warning: the water temperature is anomalous.")
+      			}
+      			
+			
+			
+				//si crea il nuovo punto 
+				var newDataPoint = {
+    				x: formattedHour,
+    				y: my_data["temperature"]["value"],
+    				pointBackgroundColor: 'rgb(255, 99, 132)'
+				};
+
+				//coloriamo il punto come necessario							
+				if (my_data["temperatureFlag"]["value"] == 1){
+					chart1.data.datasets[1].data.push(newDataPoint);
+					color_temp.push("red");
+					chart1.update();
+				}else if (my_data["temperatureFlag"]["value"] == 0){
+					chart1.data.datasets[1].data.push(newDataPoint);
+					color_temp.push("blue");
+					chart1.update();
+				}	
+				
+				
+				
+				
+				//si aggiorna il secondo grafico 
+				document.getElementById('water_update').innerHTML = hour;
+      			//document.getElementById('water_level').innerHTML = my_data["height"]["value"];
+				//document.getElementById('water_status').innerHTML = my_data["heightFlag"]["value"]
+			
+			 	if (my_data["heightFlag"]["value"] == 0){
+      				let level = document.getElementById('water_level')
+      				level.innerHTML = my_data["height"]["value"]
+      				level.style.color = "green";
+      				
+      				let status = document.getElementById('water_status')
+      				status.innerHTML = "Ok"
+      				status.style.color = "green";
+
+      			}else if (my_data["heightFlag"]["value"] == 1){
+      				let level = document.getElementById('water_level')
+      				level.innerHTML = my_data["height"]["value"]
+      				level.style.color = "red";
+      				
+      				let status = document.getElementById('water_status')
+      				status.innerHTML = "Alert"
+      				status.style.color = "red";
+      				
+      				//alert("Warning: the water level is anomalous.")
+      			}
+      			
+      			
+      			
+				//si crea il secondo punto 
+				var newDataPoint2 = {
+    				x: formattedHour,
+    				y: my_data["height"]["value"],
+    				pointBackgroundColor: 'rgb(255, 99, 132)'
+				};
+
+				//si assegna al punto un colore adeguato in base allo stato 					
+				if (my_data["heightFlag"]["value"] == 1){
+					chart2.data.datasets[1].data.push(newDataPoint2);
+					color_level.push("red");
+					chart2.update();
+				}else if (my_data["heightFlag"]["value"] == 0){
+					chart2.data.datasets[1].data.push(newDataPoint2);
+					color_level.push("blue");
+					chart2.update();
+				}	
+				
+				
+				
+				
+     	 }
+  		})
+		.catch(error => console.error(error))
+
+	}
+
+
+</script>
+
+   
+</body>
+
+</html>
+
+
+<style>
+
+	body{
+		background-color: #EEEEEE;
+	}
+	
+	.dashboard {
+		width: 80%;
+    	margin: 0 auto;
+    	text-align: center;
+	}
+
+
+	.agent{
+		display: inline-block;
+		width: 80%;
+		border-radius: 5px;
+    	border: 1px solid #ccc;
+    	padding: 20px;
+    	width: 10%;
+		background-color: #E0E0E0;
+		transform: translate(-20%, -60%);
+	}
+	
+	.chart{
+		width: 80%;
+		display: inline-block;
+	}
+
+	.agent span {
+		color: #006633;
+	}
+
+</style>
+
+       
