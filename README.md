@@ -9,6 +9,7 @@ Il progetto si articola nelle seguenti directory:
 	- Dockerfile - istruzioni per il build dell'immagine
 	- analysis.py - codice del container di analisi
 	- requirements.txt - requisiti del container
+	- average_values.json : valori medi da caricare sul DB
 - *application* :
 	- Dockerfile - istruzioni per il build dell'immagine
 	- index.js - codice di back-end del container web App
@@ -17,10 +18,6 @@ Il progetto si articola nelle seguenti directory:
 - *docker-compose* : 
 	- docker-compose.yml : istruzioni per i container Fiware
 	- dc.yml : istruzioni per i container sviluppati per il progetto
-- *import_data* :
-	- import_average.py : script per il caricamento delle medie su Mongo
-	- requirements.txt : requisiti di funzionamento dello script
-	- average_values.json : valori medi da caricare sul DB
 - *sensor* : 
 	- Dockerfile - istruzioni per il build dell'immagine
 	- sensor.py - codice del container sensore
