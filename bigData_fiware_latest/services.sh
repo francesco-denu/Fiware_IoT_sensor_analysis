@@ -42,7 +42,7 @@ loadData () {
 	db.createCollection("means");' > /dev/null
 	echo -e "\033[1;32mdone\033[0m"
 	echo -e "Importing simulated data ..."
-	
+
 	if command -v pip &>/dev/null;
 	then
   		pip install -r ./import_data/requirements.txt 1>/dev/null
@@ -80,7 +80,7 @@ addDatabaseIndex () {
 
 stoppingContainers () {
 	CONTAINERS=$(docker ps --filter "label=org.fiware=tutorial" -aq)
-	
+
 	if [[ "$(docker inspect -f '{{.State.Running}}' sensor 2>/dev/null)" == "true" ]]
 	then
 		echo -e "Stopping \033[1;31msensor\033[0m container"
@@ -94,14 +94,14 @@ stoppingContainers () {
   		docker rm -f analysis 1> /dev/null
 		echo -e "\033[1;32mdone\033[0m"
 	fi
-	
+
 	if [[ "$(docker inspect -f '{{.State.Running}}' application 2>/dev/null)" == "true" ]]
 	then
 		echo -e "Stopping \033[1;36mWeb App\033[0m container"
   		docker rm -f application 1> /dev/null
 		echo -e "\033[1;32mdone\033[0m"
 	fi
-	
+
 	if [[ -n $CONTAINERS ]]; then
 		echo -e "Stopping \033[1;33mFiware\033[0m containers"
 		docker rm -f $CONTAINERS 1>/dev/null|| true
@@ -135,26 +135,26 @@ displayServices () {
 }
 
 removingPersonal(){
-	if [[ "$(docker images -q fiware-sensor 2>/dev/null)" != "" ]]
+	if [[ "$(docker images -q docker-compose-sensor 2>/dev/null)" != "" ]]
 	then
 		echo -e "Removing \033[1;31msensor\033[0m image."
-		docker image rm -f fiware-sensor 1>/dev/null
+		docker image rm -f docker-compose-sensor 1>/dev/null
 		echo -e "\033[1;32mdone\033[0m"
 	fi
 
-	if [[ "$(docker images -q fiware-analysis 2>/dev/null)" != "" ]]
+	if [[ "$(docker images -q docker-compose-analysis 2>/dev/null)" != "" ]]
 	then
 		echo -e "Removing \033[1;35mAnalysis\033[0m image."
-		docker image rm -f fiware-analysis 1>/dev/null
+		docker image rm -f docker-compose-analysis 1>/dev/null
 		echo -e "\033[1;32mdone\033[0m"
 	fi
-	
-	if [[ "$(docker images -q fiware-app 2>/dev/null)" != "" ]]
+
+	if [[ "$(docker images -q docker-compose-app 2>/dev/null)" != "" ]]
 	then
 		echo -e "Removing \033[1;36mWeb App\033[0m image."
-		docker image rm -f fiware-app 1>/dev/null
+		docker image rm -f docker-compose-app 1>/dev/null
 		echo -e "\033[1;32mdone\033[0m"
-	fi 	
+	fi
 }
 
 removingFiware(){
@@ -164,13 +164,13 @@ removingFiware(){
 		docker image rm -f $(docker images -q fiware/orion-ld) 1>/dev/null
 		echo -e "\033[1;32mdone\033[0m"
 	fi
-	
+
 	if [[ "$(docker images -q mongo 2>/dev/null)" != "" ]]
 	then
 		echo -e "Removing \033[1;34mMongo-DB\033[0m image."
 		docker image rm -f $(docker images -q mongo) 1>/dev/null
 		echo -e "\033[1;32mdone\033[0m"
-	fi 	
+	fi
 }
 
 command="$1"
@@ -212,7 +212,7 @@ case "${command}" in
 	"create")
 		stoppingContainers # ferma i container
 		echo "Pulling Docker images and deleting builded images."
-		docker pull curlimages/curl 
+		docker pull curlimages/curl
 		${dockerCmd} -f docker-compose/docker-compose.yml pull # fa il pull delle immagini orion
 		removingPersonal # rimuove le immagini personali, utile se si sono fatti cambiamenti al codice
 		;;
