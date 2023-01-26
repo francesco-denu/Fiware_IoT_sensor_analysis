@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 dockerCmd="docker compose"
 if (( $# == 2 )); then
     dockerCmd="docker-compose"
@@ -187,7 +185,6 @@ case "${command}" in
 		echo "purge  : Rimuove tutte le immagini ed i pull eseguiti per il progetto."
         ;;
     "start")
-		export $(cat .env | grep "#" -v)
 		stoppingContainers # fermiamo i container attivit
 		echo -e "Starting containers:   \033[1;33mOrion\033[0m and a \033[1;34mMongoDB\033[0m database."
 		echo ""
@@ -201,12 +198,10 @@ case "${command}" in
 		displayServices # mostriamo i servizi disponibili
 		;;
 	"stop")
-		export $(cat .env | grep "#" -v)
 		stoppingContainers
 		;;
 	"purge")
 		echo -e "\033[5;31mPurge started...\033[0m"
-		
 		stoppingContainers
 		removingPersonal
 		removingFiware
@@ -215,7 +210,6 @@ case "${command}" in
 		sium
 		;;
 	"create")
-		export $(cat .env | grep "#" -v)
 		stoppingContainers # ferma i container
 		echo "Pulling Docker images and deleting builded images."
 		docker pull curlimages/curl 
