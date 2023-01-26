@@ -163,7 +163,7 @@ removingFiware(){
 		if [[ "$(docker images -q fiware/orion-ld 2>/dev/null)" != "" ]]
 	then
 		echo -e "Removing \033[1;33mOrion Contex Broker\033[0m image."
-		#docker image rm -f $(docker images -q fiware/orion-ld) 1>/dev/null
+		docker image rm -f $(docker images -q fiware/orion-ld) 1>/dev/null
 		echo -e "\033[1;32mdone\033[0m"
 	fi
 	
