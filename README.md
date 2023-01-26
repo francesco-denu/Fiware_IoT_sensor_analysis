@@ -32,11 +32,11 @@ Il progetto si articola nelle seguenti directory:
 	./services.sh [OPZIONE]
 	
 	OPZIONI
-	help              Mostra i comandi disponibili.
+	help            Mostra i comandi disponibili.
 	create          Ferma i container. Inizia il pull delle immagini Fiware. Rimuove le build delle immagini personali.
-	start            Ferma i container. Esegue il build delle immagini personali. Avvia i container.
+	start           Ferma i container. Esegue il build delle immagini personali. Avvia i container.
 	stop            Ferma i container.
-	purge          Rimuove tutte le immagini ed i pull eseguiti per il progetto.
+	purge           Rimuove tutte le immagini ed i pull eseguiti per il progetto.
 	
 	ESEMPI
 	./services create
