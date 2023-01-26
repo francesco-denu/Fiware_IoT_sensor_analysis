@@ -206,7 +206,7 @@ case "${command}" in
 		;;
 	"purge")
 		echo -e "\033[5;31mPurge started...\033[0m"
-		export $(cat .env | grep "#" -v)
+		
 		stoppingContainers
 		removingPersonal
 		removingFiware
